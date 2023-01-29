@@ -1,16 +1,16 @@
-from Room import Room as room
-from Player import Player
-from Item import Item
+from Room import Room
+from Entity import Player
+from Item import Weapon
 
-sword = Item("sword", 15)
+sword = Weapon("sword", 15, 10)
 
-kitchen = room("kitchen")
+kitchen = Room("kitchen")
 kitchen.set_description("A kitchen")
 
-dining_hall = room("Dining hall")
+dining_hall = Room("Dining hall")
 dining_hall.set_description("you eat food here bro")
 
-ballroom = room("Ballroom")
+ballroom = Room("Ballroom")
 ballroom.set_description("you do be dancing bro")
 
 kitchen.link_room(dining_hall, "south")
@@ -20,7 +20,7 @@ dining_hall.link_room(ballroom, "west")
 ballroom.link_room(dining_hall, "east")
 ballroom.add_item(sword)
 
-player1 = Player(kitchen, 10)
+player1 = Player(kitchen, 999)
 
 while not player1.in_inventory(sword):
     print("\n")
@@ -35,6 +35,6 @@ while not player1.in_inventory(sword):
             direction = input("Please enter the direction: ")
             player1.move(direction)
     
-    print("you have: ", player1.get_inventory())
+    print("you have: ", *player1.get_inventory())
 
 print("your won")
