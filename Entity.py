@@ -27,8 +27,7 @@ class Entity():
         for held_item in self.inventory:
             if held_item == item:
                 return True
-        else:
-            return False
+        return False
 
     def move(self, direction):
         try:
