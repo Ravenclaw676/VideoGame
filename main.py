@@ -1,3 +1,7 @@
+"""_summary_
+    it is the main file of the program
+"""
+
 from Room import Room
 from Entity import Player
 from Item import Weapon
@@ -34,7 +38,7 @@ while not player1.in_inventory(sword):
         case "move":
             direction = input("Please enter the direction: ")
             player1.move(direction)
-    
+
     print("you have: ", *player1.get_inventory())
 
 print("your won")
