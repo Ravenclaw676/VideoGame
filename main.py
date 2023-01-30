@@ -1,7 +1,3 @@
-"""_summary_
-    it is the main file of the program
-"""
-
 from Room import Room
 from Entity import Player
 from Item import Weapon
