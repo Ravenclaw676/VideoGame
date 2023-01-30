@@ -6,11 +6,12 @@ class Entity():
         self.health = health
 
     def __repr__(self):
-        return f"""Name: {self.name}\n
-                Location: {self.location.get_name()}\n
-                Health: {self.name}\n
-                Inventory Contents: {self.inventory}\n
-                """
+        return f"""
+Name: {self.name}
+Location: {self.location.get_name()}
+Health: {self.get_health()}
+inventory Contents: {self.inventory}
+"""
 
     def get_name(self):
         return self.name
@@ -21,8 +22,14 @@ class Entity():
     def get_location(self):
         return self.location
 
+    def get_health(self):
+        return self.health
+
     def set_name(self, name):
         self.name = name
+
+    def set_health(self, health):
+        self.health = health
 
     def equip_item(self, item):
         try:
@@ -56,6 +63,7 @@ class Player(Entity):
         string = super().__repr__()
         string += f"Carry capacity: {self.carry_capacity}\n"
         string += f"Current Weight: {self.current_weight}\n"
+        return string
 
     def get_carry_capacity(self):
         return self.carry_capacity

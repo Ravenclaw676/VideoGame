@@ -4,6 +4,8 @@ class Room():
         self.description = None
         self.linked_rooms = {}
         self.items = []
+        self.enemies = []
+        self.total_enemies = 0
 
     def __repr__(self):
         string = self.name + "\n"
@@ -28,6 +30,9 @@ class Room():
             if item.get_name() == name:
                 return item
 
+    def get_total_enemies(self):
+        return self.total_enemies
+
     def set_description(self, description):
         self.description = description
 
@@ -36,6 +41,14 @@ class Room():
 
     def add_item(self, item):
         self.items.append(item)
+
+    def add_enemy(self, enemy):
+        self.enemies.append(enemy)
+        self.total_enemies += 1
+
+    def remove_enemy(self, enemy):
+        self.enemies.remove(enemy)
+        self.total_enemies -= 1
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link

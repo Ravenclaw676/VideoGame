@@ -20,12 +20,11 @@ dining_hall.link_room(ballroom, "west")
 ballroom.link_room(dining_hall, "east")
 ballroom.add_item(sword)
 
-player1 = Player(kitchen, 999)
-print(player1)
+player1 = Player(kitchen, 999, 10)
 
-while not player1.in_inventory(sword):
+quitting = False
+while not quitting or ballroom.get_total_enemies() > 0:
     print("\n")
-    print(player1.location)
     command = input("Please enter what you want to do: ")
     match command:
         case "equip":
@@ -35,7 +34,15 @@ while not player1.in_inventory(sword):
         case "move":
             direction = input("Please enter the direction: ")
             player1.move(direction)
+        case "quit":
+            quitting = True
+            continue
+        case _:
+            print("Invalid input")
 
-    print("you have: ", *player1.get_inventory())
+    print(player1)
 
-print("your won")
+if quitting:
+    print("You quit")
+else:
+    print("your won")
