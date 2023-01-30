@@ -21,6 +21,7 @@ ballroom.link_room(dining_hall, "east")
 ballroom.add_item(sword)
 
 player1 = Player(kitchen, 999)
+print(player1)
 
 while not player1.in_inventory(sword):
     print("\n")
