@@ -9,7 +9,6 @@ class Room():
 
     def __repr__(self):
         string = self.name + "\n"
-        string += "--------------\n"
         string += self.description + "\n"
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
