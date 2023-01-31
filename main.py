@@ -24,30 +24,40 @@ boss = Entity("boss", ballroom, 10)
 ballroom.add_enemy(boss)
 
 player1 = Player(kitchen, 999, 10)
+print(player1.location)
 
-quitting = False
-while not quitting or ballroom.get_total_enemies() > 0:
-    print("\n")
-    command = input("Please enter what you want to do: ")
-    match command:
-        case "equip":
-            name_of_item = input("what is the name of the item: ")
-            item = player1.location.get_item_by_name(name_of_item)
-            player1.equip_item(item)
-        case "move":
-            direction = input("Please enter the direction: ")
-            player1.move(direction)
-        case "attack":
-            player1.weapon.attack(player1.location.enemies[0])
-        case "quit":
-            quitting = True
-            continue
-        case _:
-            print("Invalid input")
 
-    print(player1)
+def main_game_loop():
+    quitting = False
+    while not quitting:
+        print("\n")
+        command = input("Please enter what you want to do: ")
+        match command:
+            case "equip":
+                name_of_item = input("what is the name of the item: ")
+                item = player1.location.get_item_by_name(name_of_item)
+                player1.equip_item(item)
+            case "move":
+                print(player1.location)
+                direction = input("Please enter the direction: ")
+                player1.move(direction)
+            case "attack":
+                player1.weapon.attack(player1.location.enemies[0])
+            case "quit":
+                quitting = True
+                continue
+            case _:
+                print("Invalid input")
 
-if quitting:
-    print("You quit")
-else:
-    print("your won")
+        print(player1)
+        if ballroom.get_total_enemies() == 0:
+            break
+
+    if quitting:
+        print("You quit")
+    else:
+        print("your won")
+
+
+if __name__ == "__main__":
+    main_game_loop()

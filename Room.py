@@ -16,6 +16,8 @@ class Room():
         for item in self.items:
             string += str(item) + "\n"
 
+        string += f"there is {self.total_enemies}"
+
         return string
 
     def get_name(self):
