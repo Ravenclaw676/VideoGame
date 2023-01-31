@@ -1,5 +1,5 @@
 from Room import Room
-from Entity import Entity, Player
+from Entity import Player
 from Item import Weapon
 
 
@@ -15,15 +15,22 @@ def main():
     ballroom = Room("Ballroom")
     ballroom.set_description("you do be dancing bro")
 
+<<<<<<< HEAD
     kitchen.link_room(dining_hall, "south")
     dining_hall.link_room(kitchen, "north")
 
     dining_hall.link_room(ballroom, "west")
     ballroom.link_room(dining_hall, "east")
     ballroom.add_item(sword)
+=======
+dining_hall.link_room(ballroom, "west")
+ballroom.link_room(dining_hall, "east")
+ballroom.add_item(sword)
+>>>>>>> parent of dc246fb (more enemy stuff)
 
     player1 = Player(kitchen, 999, 10)
 
+<<<<<<< HEAD
     quitting = False
     while not quitting or ballroom.get_total_enemies() > 0:
         print(f"you are in: {player1.location}")
@@ -41,6 +48,25 @@ def main():
                 continue
             case _:
                 print("Invalid input")
+=======
+quitting = False
+while not quitting or ballroom.get_total_enemies() > 0:
+    print("\n")
+    command = input("Please enter what you want to do: ")
+    match command:
+        case "equip":
+            name_of_item = input("what is the name of the item: ")
+            item = player1.location.get_item_by_name(name_of_item)
+            player1.equip_item(item)
+        case "move":
+            direction = input("Please enter the direction: ")
+            player1.move(direction)
+        case "quit":
+            quitting = True
+            continue
+        case _:
+            print("Invalid input")
+>>>>>>> parent of dc246fb (more enemy stuff)
 
         print(player1)
 
