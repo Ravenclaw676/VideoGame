@@ -1,5 +1,5 @@
 from Room import Room
-from Entity import Entity, Player
+from Entity import Player
 from Item import Weapon
 
 
@@ -24,23 +24,23 @@ def main():
 
     player1 = Player(kitchen, 999, 10)
 
-    quitting = False
-    while not quitting or ballroom.get_total_enemies() > 0:
-        print(f"you are in: {player1.location}")
-        command = input("Please enter what you want to do: ")
-        match command:
-            case "equip":
-                name_of_item = input("what is the name of the item: ")
-                item = player1.location.get_item_by_name(name_of_item)
-                player1.equip_item(item)
-            case "move":
-                direction = input("Please enter the direction: ")
-                player1.move(direction)
-            case "quit":
-                quitting = True
-                continue
-            case _:
-                print("Invalid input")
+quitting = False
+while not quitting or ballroom.get_total_enemies() > 0:
+    print("\n")
+    command = input("Please enter what you want to do: ")
+    match command:
+        case "equip":
+            name_of_item = input("what is the name of the item: ")
+            item = player1.location.get_item_by_name(name_of_item)
+            player1.equip_item(item)
+        case "move":
+            direction = input("Please enter the direction: ")
+            player1.move(direction)
+        case "quit":
+            quitting = True
+            continue
+        case _:
+            print("Invalid input")
 
         print(player1)
 
