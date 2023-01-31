@@ -26,9 +26,14 @@ def main():
 dining_hall.link_room(ballroom, "west")
 ballroom.link_room(dining_hall, "east")
 ballroom.add_item(sword)
+<<<<<<< HEAD
 >>>>>>> parent of dc246fb (more enemy stuff)
 
     player1 = Player(kitchen, 999, 10)
+=======
+
+player1 = Player(kitchen, 999, 10)
+>>>>>>> parent of dc246fb (more enemy stuff)
 
 <<<<<<< HEAD
     quitting = False
