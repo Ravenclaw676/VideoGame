@@ -1,5 +1,5 @@
 from Room import Room
-from Entity import Entity, Player
+from Entity import Player
 from Item import Weapon
 
 
@@ -15,16 +15,18 @@ def main():
     ballroom = Room("Ballroom")
     ballroom.set_description("you do be dancing bro")
 
-    boss = Entity("boss", ballroom, 10)
-    ballroom.add_enemy(boss)
+    kitchen.link_room(dining_hall, "south")
+    dining_hall.link_room(kitchen, "north")
 
     dining_hall.link_room(ballroom, "west")
     ballroom.link_room(dining_hall, "east")
     ballroom.add_item(sword)
 
+    player1 = Player(kitchen, 999, 10)
+
     quitting = False
     while not quitting or ballroom.get_total_enemies() > 0:
-        print("\n")
+        print(f"you are in: {player1.location}")
         command = input("Please enter what you want to do: ")
         match command:
             case "equip":
@@ -34,8 +36,6 @@ def main():
             case "move":
                 direction = input("Please enter the direction: ")
                 player1.move(direction)
-            case "attack":
-                player1.weapon.attack(player1.location.enemies[0])
             case "quit":
                 quitting = True
                 continue
@@ -44,10 +44,10 @@ def main():
 
         print(player1)
 
-        if quitting:
-            print("You quit")
-        else:
-            print("your won")
+    if quitting:
+        print("You quit")
+    else:
+        print("your won")
 
 
 if __name__ == "__main__":

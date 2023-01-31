@@ -1,5 +1,3 @@
-from Item import Weapon
-
 class Entity():
     def __init__(self, name, starting_location, health):
         self.location = starting_location
@@ -59,14 +57,12 @@ class Player(Entity):
     def __init__(self, starting_location, carry_capacity, health):
         self.carry_capacity = carry_capacity
         self.current_weight = 0
-        self.weapon = None
         super().__init__("Player", starting_location, health)
 
     def __repr__(self):
         string = super().__repr__()
         string += f"Carry capacity: {self.carry_capacity}\n"
         string += f"Current Weight: {self.current_weight}\n"
-        string += f"Current Weapon: {self.weapon}"
         return string
 
     def get_carry_capacity(self):
@@ -88,6 +84,3 @@ class Player(Entity):
                 self.current_weight += item.get_weight()
         except ValueError:
             print("That item does not exist.")
-
-        if isinstance(item, Weapon):
-            self.weapon = item
