@@ -1,5 +1,5 @@
 from Room import Room
-from Entity import Player
+from Entity import Entity, Player
 from Item import Weapon
 
 
